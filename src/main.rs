@@ -1,7 +1,12 @@
 use std::{error::Error, process::exit};
 
+use app::create_app;
+
+mod app;
+
 fn main() {
-    println!("Hello, world!");
+    let app = create_app();
+    let _args = app.get_matches();
     if let Err(e) = run() {
         eprintln!("{}", e);
         exit(1);
