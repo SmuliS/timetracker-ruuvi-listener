@@ -1,8 +1,12 @@
+use std::thread::sleep;
+use std::time::Duration;
 use std::{error::Error, process::exit};
 
 use app::create_app;
+use bluetooth::find_ruuvi_devices;
 
 mod app;
+mod bluetooth;
 
 fn main() {
     let app = create_app();
@@ -14,5 +18,10 @@ fn main() {
 }
 
 fn run() -> Result<(), Box<dyn Error>> {
-    Ok(())
+    loop {
+        for device in find_ruuvi_devices()? {
+            println!("{:?}", device.get_acceleration());
+        }
+        sleep(Duration::from_secs(1));
+    }
 }

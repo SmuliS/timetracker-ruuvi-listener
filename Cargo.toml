@@ -8,3 +8,5 @@ edition = "2018"
 
 [dependencies]
 clap = "2.33.3"
+blurz = "0.4.0"
+ruuvi-sensor-protocol = "0.4.1"
